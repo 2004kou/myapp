@@ -6,8 +6,12 @@
 
 Mac、Windows(PowerShell、Git Bash)の場合
 cp .env.example .env
+
+
 Windows(コマンドプロンプト)の場合
 copy .env.example .env
+
+
 起動方法
 
 docker compose up
