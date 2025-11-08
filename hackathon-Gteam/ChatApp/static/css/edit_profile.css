@@ -1,7 +1,4 @@
 /* room-container 内でフォーム中央寄せ */
-.room-container{
-  height: 900px;
-}
 .room-main {
   display: flex;
   /* justify-content: center; */

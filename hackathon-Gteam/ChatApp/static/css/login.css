@@ -40,7 +40,7 @@ html, body {
   margin: 0;
 }
 .form-login input{
-    width: 250px;
+    width: 25vw;
     display: block;
     background-color: white;
     border-radius: 50px;

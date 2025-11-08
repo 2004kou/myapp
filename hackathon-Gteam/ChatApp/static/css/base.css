@@ -25,7 +25,7 @@ h2 {
 
 input {
   display: block;
-  width: 24vw; /* ボタンの幅 */
+  width: 15vw; /* ボタンの幅 */
   padding: 0.5vw ; /* ボタンの高さ */
   margin: 0.6vw; /* 要素の外側の余白 */
   border-radius: 50px; /* ボタンの角丸 */
@@ -100,6 +100,7 @@ h3 {
   text-decoration: none; /* 文字の下線:なし */
 }
 
+
 /* ログアウトボタン */
 .logout-button {
   display: inline-block;
@@ -148,6 +149,7 @@ h3 {
     background-color: #FEF3F2;
     width: 100%;
     padding-left: 25%;
+    min-height: 100vh;
 }
 .flashes p {
   color: red;

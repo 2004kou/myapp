@@ -16,7 +16,7 @@
         <a class="menu-button" href="{{ url_for('index_view') }}">ルーム一覧</a>
         <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
         <a class="menu-button" href="{{ url_for('room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
-        <a class="menu-button" href="{{ url_for('profile_view', user_id=current_user.user_id) }}"><i class="fas fa-user"></i> プロフィール</a>
+        <a class="menu-button" href="{{ url_for('edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
         <a
         class="menu-button"
         href="{{ url_for('survey_view') }}"
@@ -32,22 +32,17 @@
         <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
     </div>
   </nav>
-  
-  <div class="room-container">
-    <div class="menu-btn" id="menu-btn">
-      <span></span>
-      <span></span>
-      <span></span>
     </div>
-           {% if channel_name %}
-              <h5 class="chatroom-title">{{ channel_name }}のチャットルーム</h5>
-           {% endif %}
+  <div class="room-container">
+          {% if channel_name %}
+              <h5 class="chatroom-title"><span class="index_view"><a href="{{ url_for('index_view') }}"> <img src="{{ url_for('static', filename='image/right.png') }}" alt=""></a></span>{{ channel_name }}のチャットルーム</h5>
+          {% endif %}
     <div class="room-header">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
+      {% with flashes = get_flashed_messages() %}
+        {% if flashes %}
         <div class="flashes">
-          {% for message in messages %}
-            <p>{{ message }}</p>
+          {% for flash in flashes %}
+            <p>{{ flash }}</p>
           {% endfor %}
         </div>
         {% endif %}
@@ -56,7 +51,6 @@
     </div>
     <div class="room-main">
       <!-- ここにチャット画面のやり取りを表示させる -->
-
       <!-- 以下テスト用に追加 -->
       <div class="chat-box ">
         <!-- チャット投稿フォーム -->
@@ -93,7 +87,7 @@
           {% endif %}
               </div>
               <p class="message-at">{{ message.message_content }}</p>
-            </div>
+              </div>
 
             {% if message.user_id == user_id %}
             <!-- 編集フォーム -->
