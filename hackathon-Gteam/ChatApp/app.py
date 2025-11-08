@@ -348,7 +348,9 @@ def profile_view():
 @app.route('/edit_profile', methods=['GET']) 
 @login_required
 def edit_profile_view():
-    return render_template('edit_profile.html')
+    user_id = session.get('user_id')
+    profile = User.get_by_profile(user_id)
+    return render_template('edit_profile.html',profile = profile)
 
 
 @app.route('/edit_profile', methods=['POST'])

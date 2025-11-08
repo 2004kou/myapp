@@ -16,7 +16,7 @@ CREATE TABLE users (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     nickname VARCHAR(50) NOT NULL,
-    icon_image_url VARCHAR(255) DEFAULT '/static/image/icon' NULL,
+    icon_image_url VARCHAR(255) DEFAULT 'icon.jpg'  NOT NULL,
     favorite VARCHAR(255) NOT NULL DEFAULT '未登録',
     bio VARCHAR(255) NULL,
     occupation VARCHAR(255) NULL DEFAULT '未登録',

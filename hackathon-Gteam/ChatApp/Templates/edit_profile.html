@@ -50,10 +50,17 @@
       <h2 class="min-with-subtitle">プロフィール</h2>
       <form method="POST" action="{{ url_for('edit_profile') }}">
         <!-- 編集用の入力フォーム -->
+        
+            
+          
         <div class="form-group">
+        {% if profile["nickname"] is not none %}
           <label for="nickname">ニックネーム</label>
-          <input placeholder="必須項目です" type="text" id="nickname" name="nickname" value=nickname required/>
-        </div>
+          <input placeholder="必須項目です" type="text" id="nickname" name="nickname" value="{{ profile['nickname'] }}" required/>
+        {% else %}
+          <input placeholder="必須項目です" type="text" id="nickname" name="nickname" value="nickname" required/>
+        {% endif %}
+      </div>
         <div class="form-group">
           <label for="bio">コメント</label>
           <textarea id="bio" name="bio" rows="3">{{ current_user.bio or '' }}</textarea>
@@ -63,12 +70,20 @@
           <textarea id="favorite" name="favorite" rows="2" placeholder="例：食べ歩き">{{ current_user.favorite or '' }}</textarea>
         </div>
         <div class="form-group">
+        {% if profile["occupation"] is not none %}
           <label for="occupation">職業</label>
+          <input placeholder="必須項目です" type="text" id="nickname" name="occupation" value="{{ profile['occupation'] }}" required/>
+        {% else %}
           <input type=text id="occupation" name="occupation">
+        {% endif %}
         </div>
         <div class="form-group">
-          <label for="residence">所在地</label>
-          <input type=text id="residence" name="residence">
+        {% if profile["residence"] is not none %}
+           <label for="residence">所在地</label>
+          <input placeholder="必須項目です" type="text" id="nickname" name="occupation" value="{{ profile['residence'] }}" required/>
+        {% else %}
+          <input type=text id="residence" name="residence">     
+         {% endif %}
         </div>
         <label class="icon-container">アイコン選択</label>
         {% set icons = ['icon.jpg', 'balance_scale.png', 'basketball.png', 'bird.png', 'camera.png', 'candy.png', 'cherry_blossom.png', 'clover.png', 'gift.png', 'glasses.png', 'maple_leaf.png', 'music.png', 'notebook.png', 'sunflower.png', 'teddy_bear.png', 'whale.png'] %}
