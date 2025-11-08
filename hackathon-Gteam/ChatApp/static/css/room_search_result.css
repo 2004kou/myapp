@@ -1,0 +1,96 @@
+.room-serch-result-item{
+        display: block;
+        width: 60%;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ff9999;
+        border-radius: 8px;
+        background-color: #fff0f5; /* 桜っぽい淡いピンク */
+        appearance: none; /* ブラウザのデフォルト矢印を消す */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        margin-left: 60px;
+    }
+    .room-link{
+        text-decoration: none;
+    }
+    .room-serch-result-title{
+         margin-bottom: 30px;
+        color: #912018;
+        font-size: large;
+    }
+    .room-serch-result-item p{
+        color: #912018;
+    }
+    .room-serch-result-item small{
+        color: #912018;
+    }
+    .ranking-item{
+        margin-left: 60px;
+    }
+    .ranking-title{
+        font-size: xx-large;
+        margin: 60px 0;
+    }
+    .ranking-subtitle{
+        display: flex;
+        font-size: large;
+    }
+    .ranking-subtitle h4 {
+        margin-bottom: 30px;
+        color: #912018;
+        font-size: larger;
+    }
+    .ranking-subtitle h5{
+        margin-bottom: 30px;
+        color: #912018;
+        font-size: larger
+    }
+@media screen and (max-width: 768px){
+    .min-with-title{
+        text-align: center;
+        margin-top: 60px;
+    }
+    .room-serch-result-item{
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ff9999;
+        border-radius: 8px;
+        background-color: #fff0f5; /* 桜っぽい淡いピンク */
+        appearance: none; /* ブラウザのデフォルト矢印を消す */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        margin: 40px auto;
+    }
+    .room-link{
+        text-decoration: none;
+    }
+    .room-serch-result-title{
+        text-align: center;
+         margin-bottom: 30px;
+        color: #912018;
+    }
+    .room-serch-result-item p{
+        color: #912018;
+    }
+    .room-serch-result-item small{
+        color: #912018;
+    }
+    .ranking-subtitle{
+        display: flex;
+        justify-content: center;
+    }
+    .ranking-subtitle h4 {
+        margin-bottom: 30px;
+        color: #912018;
+        font-size: larger;
+    }
+    .ranking-subtitle h5{
+        margin-bottom: 30px;
+        color: #912018;
+        font-size: larger
+    }
+}

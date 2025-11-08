@@ -1,0 +1,177 @@
+.room-create{
+    margin-left: 50px;
+}
+.room-title{
+    font-size: 30px;
+    color: #cf256d;
+    font-weight: 300;
+    text-align: center;
+    line-height: 60px;
+    padding-top: 30px;
+}
+.selectbox-2 {
+ 
+  /* アニメーションも設定できる */
+  border: none;
+  width: 40%;
+  height: 200px;
+}
+.selectbox-2 option{
+ border: #cf256d 1px solid;
+  border-radius: 8px;
+  margin: 8px 0;
+  box-shadow: 4px 4px #ff67b3;
+  height: 30px;
+  background-color: #fb9dcc;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+}
+.intoro{
+     font-size: 30px;
+    color: #912018;
+    font-weight: 300;
+    line-height: 80px;
+    padding-top: 30px;
+}
+.button-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    padding: .9em 2em;
+    border: none;
+    border-bottom: solid 5px #ff67b3;
+    border-radius: 5px;
+    background-color:#fb9dcc;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+    transition: .5s ease;
+    margin-left: 50px;
+}
+#channel_name{
+        width: 60%;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #0f0f0f;
+        border-radius: 8px;
+        background-color: white; /* 桜っぽい淡いピンク */
+        color: #7c7b7b;
+        appearance: none; /* ブラウザのデフォルト矢印を消す */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        margin-top: 40px;
+    }
+
+.button-4:hover {
+    transform: translateY(3px);
+    border-bottom-width: 2px;
+}
+.search-genre-name{
+        width: 60%;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #121212;
+        border-radius: 8px;
+        background-color: #fff0f5; /* 桜っぽい淡いピンク */
+        color: #333;
+        appearance: none; /* ブラウザのデフォルト矢印を消す */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        margin-top: 20px;
+  }
+  #comment{
+        width: 60%;
+        height: 200px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #080808;
+        border-radius: 8px;
+        background-color: white; /* 桜っぽい淡いピンク */
+        align-self: flex-start;
+        display: block;
+        white-space: pre-wrap; /* 改行や空白をそのまま反映 */
+        word-wrap: break-word;
+  }
+  .room-create-button{
+    display: inline-block;
+    text-align: center;
+    width: 60%; /* ボタンの幅 */
+    height: 40px;
+    padding: 0.35vw ; /* ボタンの高さ */
+    margin: 1vw;
+    background-color: #D92D20;
+    color: #FFFFFF;
+    font-size: large;
+    border: none; /* 要素の枠線: なし */
+    border-radius: 50px; /* ボタンの角丸 */
+    text-decoration: none; /* 文字の下線:なし */
+    cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+    margin-top: 50px;
+  }
+@media screen and (max-width: 768px){
+    .room-main{
+        background-color: #FEF3F2;
+    }
+    .room-header{
+        display: none;
+    }
+    #channel_name{
+        width: 80%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #0f0f0f;
+        border-radius: 8px;
+        background-color: white; /* 桜っぽい淡いピンク */
+        color: #7c7b7b;
+        appearance: none; /* ブラウザのデフォルト矢印を消す */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        margin-top: 40px;
+    }
+    .search-genre-name{
+        width: 80%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #121212;
+        border-radius: 8px;
+        background-color: #fff0f5; /* 桜っぽい淡いピンク */
+        color: #333;
+        appearance: none; /* ブラウザのデフォルト矢印を消す */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        margin-top: 20px;
+  }
+  #comment{
+        width: 80%;
+        height: 200px;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #080808;
+        border-radius: 8px;
+        background-color: white; /* 桜っぽい淡いピンク */
+        align-self: flex-start;
+        display: block;
+        white-space: pre-wrap; /* 改行や空白をそのまま反映 */
+  word-wrap: break-word;
+  }
+  .room-create-button{
+    display: inline-block;
+    text-align: center;
+    width: 80%; /* ボタンの幅 */
+    height: 40px;
+    padding: 0.35vw ; /* ボタンの高さ */
+    margin: 1vw;
+    background-color: #D92D20;
+    color: #FFFFFF;
+    font-size: large;
+    border: none; /* 要素の枠線: なし */
+    border-radius: 50px; /* ボタンの角丸 */
+    text-decoration: none; /* 文字の下線:なし */
+    cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+  }
+}

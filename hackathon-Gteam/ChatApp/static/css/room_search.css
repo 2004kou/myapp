@@ -1,0 +1,70 @@
+.room-main{
+  text-align: center;
+  min-height: 100vh;
+}
+ .search-genre-name{
+   width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff9999;
+  border-radius: 8px;
+  background-color: #fff0f5; /* 桜っぽい淡いピンク */
+  color: #333;
+  appearance: none; /* ブラウザのデフォルト矢印を消す */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  margin-top: 80px;
+  }
+
+
+  
+  .room-serch-button{
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff9999;
+    border-radius: 8px;
+    background-color: #f07aa1; /* 桜っぽい淡いピンク */
+    color: white;
+    appearance: none; /* ブラウザのデフォルト矢印を消す */
+    background-position: right 10px center;
+    margin-top: 40px;
+  }
+
+@media (max-width: 768px){
+
+.room-container{
+    text-align: center;
+    padding-top: 80px;
+}
+ .search-genre-name{
+   width: 80%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff9999;
+  border-radius: 8px;
+  background-color: #fff0f5; /* 桜っぽい淡いピンク */
+  color: #333;
+  appearance: none; /* ブラウザのデフォルト矢印を消す */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  margin-top: 40px;
+  }
+
+
+  
+  .room-serch-button{
+    width: 80%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff9999;
+    border-radius: 8px;
+    background-color: #f07aa1; /* 桜っぽい淡いピンク */
+    color: white;
+    appearance: none; /* ブラウザのデフォルト矢印を消す */
+    background-position: right 10px center;
+    margin-top: 40px;
+  }
+}

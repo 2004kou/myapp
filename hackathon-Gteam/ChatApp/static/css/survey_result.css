@@ -1,0 +1,59 @@
+.room-header{
+    margin-top: 80px;
+}
+.room-main{
+        text-align: center;
+        height: 20vh;
+    }
+    .survey-result-list{
+        color: #912018;
+        margin: 60px ;
+    }   
+    .survey-result-button{
+        display: inline-block;
+        width: 60%; /* ボタンの幅 */
+        height: 30px;
+        padding: 0.3vw ; /* ボタンの高さ */
+        font-size: large;
+        margin: 60px;
+        background-color: #FDA29B;
+        color: #FFFFFF; /* 文字の色 */
+        border: none; /* 要素の枠線: なし */
+        border-radius: 50px; /* ボタンの角丸 */
+        cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+        text-decoration: none; /* 文字の下線:なし */
+    }
+@media screen and (max-width: 768px){
+    .room-container{
+        padding-left: 0;
+    }
+    
+    .room-main{
+        text-align: center;
+        height: 20vh;
+    }
+    .min-with-title{
+        margin: 30px auto;
+    }
+    .min-with-detail{
+        margin: 30px auto;
+    }
+    .survey-result-list{
+        color: #912018;
+        margin: 30px ;
+    }   
+    .survey-result-button{
+        display: inline-block;
+        width: 60%; /* ボタンの幅 */
+        height: 30px;
+        padding: 0.3vw ; /* ボタンの高さ */
+        font-size: large;
+        margin: 60px;
+        background-color: #FDA29B;
+        color: #FFFFFF; /* 文字の色 */
+        border: none; /* 要素の枠線: なし */
+        border-radius: 50px; /* ボタンの角丸 */
+        cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+        text-decoration: none; /* 文字の下線:なし */
+    }
+}

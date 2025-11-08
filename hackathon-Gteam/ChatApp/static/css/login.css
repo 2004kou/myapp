@@ -1,0 +1,105 @@
+html, body {
+  background-color: #FDA29B; /* 背景色 */
+  margin: 0;/* HTML要素の余白(デフォルト):カットする */
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-family: 'Noto Sans JP', sans-serif; /*フォントの指定 */
+}
+
+.container {
+  background-color: #FEF3F2; /* 背景色 */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; /* 文字の配置(左・中央・右): 中央寄せ */
+  align-items: center;
+  width: 96vw;
+  height: 100vh;
+  margin: auto;
+  position: relative;
+}
+
+.flower {
+  position: absolute; /* 配置: (左上始点)絶対配置*/
+  width: 20%;
+}
+
+.left {
+  top: 0%;
+  left: 0%;
+}
+
+.right {
+  top: auto;
+  bottom: 0%;
+  right: 0%;
+}
+
+.form-login {
+  margin: 0;
+}
+.form-login input{
+    width: 250px;
+    display: block;
+    background-color: white;
+    border-radius: 50px;
+    border: #FDA29B 3px solid;
+    text-align: center;
+  }
+
+/* エラー表示 */
+.flashes p {
+  color: red;
+  margin: 0.5em 0;
+  font-family: 'Noto Sans JP', sans-serif; /* フォントの指定 */
+}
+
+.login-button {
+  width: 25vw; /* ボタンの幅 */
+  padding: 0.5vw ; /* ボタンの高さ */
+  margin: 1vw;
+  background-color: #D92D20;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px; /* ボタンの角丸 */
+  cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+}
+
+.switch-signup-button {
+  display: inline-block;
+  width: 24vw; /* ボタンの幅 */
+  padding: 0.4vw ; /* ボタンの高さ */
+  margin: 0.6vw;
+  background-color: #FDA29B;
+  color: #FFFFFF; /* 文字の色 */
+  border: none; /* 要素の枠線: なし */
+  border-radius: 50px; /* ボタンの角丸 */
+  cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+  text-decoration: none; /* 文字の下線:なし */
+}
+
+
+@media screen and (max-width: 768px) {
+   .login-wrapper h1{
+    font-size: 40px
+  }
+   .login-wrapper h2{
+    font-size: 20px
+  }
+  .form-login input{
+    width: 200px;
+    display: block;
+    background-color: white;
+    border-radius: 50px;
+    border: #FDA29B 3px solid;
+    text-align: center;
+  }
+
+  .login-button{
+    width: 200px;
+  }
+  .switch-signup-button{
+    width: 200px;
+  }
+}

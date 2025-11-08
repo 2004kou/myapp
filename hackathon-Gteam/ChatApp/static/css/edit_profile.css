@@ -1,0 +1,233 @@
+/* room-container 内でフォーム中央寄せ */
+.room-container{
+  height: 900px;
+}
+.room-main {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column; /* 縦並びに */
+  align-items: center; /* 中央寄せ */
+}
+
+/* 中央寄せ・縦並び・余白 */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vw;
+  padding: 2vw 0;
+}
+
+/* ラベルと入力欄のセット */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ラベル */
+.form-group label {
+  color: #912018;
+  font-size: x-large;
+  margin-bottom: 0.5vw;
+}
+
+/* 入力欄 */
+.form-group input,
+.form-group textarea {
+  width: 35vw;
+  padding: 0.4vw;
+  font-size: large;
+  border: 1.5px solid #FDA29B;
+  border-radius: 0.4vw;
+  text-align: center;
+}
+
+.icon-container {
+  font-size: 1.3vw;
+  color: #912018;
+  text-align: center;
+  display: block;
+  margin-bottom: 1vw;
+}
+
+.icon-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 中央寄せ */
+}
+
+
+.icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.icon-option {
+  display: grid; /* 中央寄せ*/
+  grid-template-columns: repeat(2, 1fr); /* アイコンを2列にする */
+  gap: 1em; /* アイコンを等間隔にする */
+  cursor: pointer;
+}
+
+.icon-option input[type="radio"] {
+  display: none;
+}
+
+.icon-option img {
+  width: 2.9vw;
+  height: 2.9vw;
+  border: 0.15vw solid transparent;
+  border-radius: 0.5vw;
+  transition: border 0.2s;
+}
+
+.icon-option input[type="radio"]:checked + img {
+  border-color: #FDA29B;
+}
+
+.update-button {
+  display: block;
+  /* text-align: center; */
+  /* justify-content: center; */
+  width: 300px; /* ボタンの幅 */
+  padding: 0.35vw ; /* ボタンの高さ */
+  margin: 1vw;
+  background-color: #D92D20;
+  color: #FFFFFF;
+  font-size: 1.2vw;
+  border: none; /* 要素の枠線: なし */
+  border-radius: 50px; /* ボタンの角丸 */
+  text-decoration: none; /* 文字の下線:なし */
+  cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+}
+.public{
+    display: flex;
+  }
+  .public-block{
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  .public-block input{
+    margin: 10px auto;
+    width: 20px;
+    height: 20px;
+  }
+  .public-block label{
+    color:#912018 ;
+    font-size: large;
+  }
+.button-container {
+  width: 300px; /* フォームと同じ幅 */
+  display: flex;
+  justify-content: center; /* ボタン自体を中央寄せ */
+  margin: 0 auto;
+}
+
+.delete-button {
+  margin: 2rem auto;
+  width: 300px;
+  background-color: #ff4444;
+  color: white;
+  padding: 0.5vw 0;
+  border: none;
+  border-radius: 1.5vw;
+  font-size: 1.1vw;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px){
+  .room-header{
+    display: none;
+  }
+  .room-main{
+    background-color: #FEF3F2;
+  }
+  .room-container{
+    width: 100%;
+  }
+  .form-group label{
+    font-size: large;
+    font-weight: bolder;
+  }
+  .min-with-subtitle{
+    margin-bottom: 30px;
+  }
+  .form-group input{
+    width: 80%;
+    height: 40px;
+    display: block;
+    background-color: white;
+    border-radius: 50px;
+    border: #FDA29B 3px solid;
+    text-align: center;
+    font-size: larger;
+  }
+  .form-group textarea{
+    width: 80%;
+    height: 40px;
+    display: block;
+    background-color: white;
+    border-radius: 50px;
+    border: #FDA29B 3px solid;
+    text-align: center;
+    font-size: larger;
+  }
+  .icon-container{
+    font-size: larger;
+  }
+  .icon-grid{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .icon-option{
+    width: 25%;
+    height: 60px;
+    text-align: center;
+
+  }
+  .icon-option label{
+    margin: 0 auto;
+
+  }
+  .icon-option img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: 30px;
+  }
+  .public{
+    display: flex;
+  }
+  .public-block{
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  .public-block input{
+    margin: 10px auto;
+    width: 20px;
+    height: 20px;
+  }
+  .public-block label{
+    color:#912018 ;
+    font-size: large;
+  }
+  .button-container{
+    width: 100%;
+    margin: 20px auto;
+  }
+  .update-button{
+    width: 60%;
+    height: 30px;
+    font-size: large;
+  }
+  .delete-button{
+    width: 237px;
+    height: 30px;
+    font-size: large;
+  }
+}

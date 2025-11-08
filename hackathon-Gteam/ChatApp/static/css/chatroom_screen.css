@@ -1,0 +1,351 @@
+/* 全体ラッパー */
+.wrapper {
+  height: 100vh;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  position: relative;
+}
+
+/* メニューコンテナ（左） */
+.menu-container {
+  position: fixed;
+  background-color:#FEF3F2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* メニューのヘッダー */
+.menu-header h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 0.05em;
+  padding-bottom: 70px;
+}
+
+/* メニューボタン群 */
+.menu-buttons h4 {
+  font-size: 1.3rem;
+  /* margin-top: 800px; */
+  margin-bottom: 15px;
+  /* border-bottom: 1px solid #FF3F2; */
+  padding-bottom: 5px;
+}
+
+.menu-button {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.menu-button i {
+  margin-right: 10px;
+}
+
+
+/* ログアウト*/
+.switch-login-button {
+  display: inline-block;
+  width: 24vw; /* ボタンの幅 */
+  padding: 0.4vw ; /* ボタンの高さ */
+  margin: 0.6vw;
+  background-color: #FDA29B;
+  color: #FFFFFF; /* 文字の色 */
+  border: none; /* 要素の枠線: なし */
+  border-radius: 50px; /* ボタンの角丸 */
+  cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+  text-decoration: none; /* 文字の下線:なし */
+}
+
+
+/* 右のチャットルーム全体 */
+.room-container {
+  flex-grow: 1;
+  flex-direction: column;
+  margin-top: 60px;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin: 20px;
+  border-radius: 12px;
+  width: 100%;
+  padding-left: 25%;
+}
+
+/* チャットヘッダー */
+.room-header {
+  /* position: absolute;
+  top: 180px;  
+  left: 180px; */
+  width: 240px;
+  background-color: transparent;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #8B4A43;  /* 落ち着いた赤茶 */
+}
+
+
+.room-header h5 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* メインチャット部分 */
+.room-main {
+  flex-grow: 1;
+  padding: auto;
+  overflow-y: auto;
+  background-color: #fafafa;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.chatroom-title{
+  width: 100%;
+  font-size: x-large;
+}
+/* チャットメッセージボックス */
+.chat-box{
+  align-items: center;
+}
+.chat-box form{
+  display: flex;
+  margin-top: 0;
+}
+.chat-box-submit-form{
+  position: fixed;
+  right: 10%;
+  bottom: 5%;
+  z-index: 5;
+  width: 50%;
+}
+.chat-box-submit-form textarea{
+  width: 80%;
+}
+
+
+.chat-box form textarea {
+  /* width: 40%; */
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 12px 15px;
+  font-size: 1rem;        
+  margin: 0 auto;    
+  display: block;     
+  resize: none;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.chat-box form textarea:focus {
+  border-color: #4a90e2;
+}
+
+
+/* 送信ボタン */
+.chat-box form button {
+  margin-top: 0px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-box form button:hover {
+  background-color: #357abd;
+}
+.direction{
+  flex-direction: column-reverse;
+  align-items: start;
+}
+/* メッセージブロック */
+.message-block {
+  background-color: #FADADD;
+  width: 95%;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  gap: 10px;
+  /* flex-wrap: wrap; */
+  margin-left: 10px;
+}
+
+.message-block div{
+  display: flex;           /* 横並びに */ 
+  align-items: center;     /* 縦中央揃え */
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+  gap: 10px;
+  flex-wrap: nowrap;       /* 折り返さない */
+}
+
+.message-block p .message-text {
+  /* メッセージ部分 */
+  /* flex-grow: 1;            可能な限り幅を広げる */
+  text-align: left;        /* 左寄せ */
+  word-break: break-word;  /* 長い単語を折り返す */
+}
+
+.message-block p time,
+.message-block p span.time {
+  font-size: 0.75rem;
+  color: #999;
+  white-space: nowrap;     /* 改行させない */
+  margin-left: 10px;       /* 少し左に余白 */
+  flex-shrink: 0;          /* 幅を縮めない */
+  text-align: right;       /* 右寄せ */
+}
+
+/* アイコン丸く */
+.message-block img {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+/* ニックネームは太字で少し色付け */
+.message-block strong {
+  color: #2a3f54;
+}
+
+
+/* 編集・削除フォームのボタン */
+.message-block form {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.message-block form input[type="text"] {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.message-block form button {
+  background-color: #4a90e2;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 4px;
+}
+
+.message-block form button:hover {
+  background-color: #357abd;
+}
+
+/* 削除ボタンは赤色 */
+.message-block form:nth-child(2) button {
+  background-color: #D9534F;
+}
+
+.message-block form:nth-child(2) button:hover {
+  background-color: #E86A92;
+}
+
+/* スクロールバー（Webkit系） */
+.room-main::-webkit-scrollbar {
+  width: 8px;
+}
+
+.room-main::-webkit-scrollbar-thumb {
+  background-color: rgba(42, 63, 84, 0.3);
+  border-radius: 4px;
+}
+
+.nickname{
+  font-size: smaller;
+  color: #555555;
+  position: absolute;
+  bottom: -20%;
+  right: 0;
+}
+.message-at{
+  font-size: large;
+  width: 100%;
+}
+.created-at{
+    font-size: x-small;
+    color: #555555;
+}
+.display {
+  position: relative;
+  width: 40%;
+}
+.mymessage{
+  float: right;
+  background-color: #f090af;
+}
+
+@media screen and (max-width: 768px){
+  .menu-container{
+    padding-top: 60px;
+  }
+  .menu-header h3{
+    padding-bottom: 150px;
+  }
+  .menu-btn{
+    left: 3%;
+    top: 3%;
+  }
+  .room-container{
+    padding-left: 0;
+  }
+  .room-main{
+    max-width: 100%;
+  }
+  .chat-box{
+    max-width: 100%;
+  }
+  .room-container{
+    max-width: 100%;
+  }
+  .room-header h5{
+    font-size: large;
+  }
+  .chat-box-submit-form {
+    width: 75%;
+    right: 15%;
+  }
+  .message-block div{
+    justify-content: left;
+    width: 80%;
+  }
+  #text{
+    width: 150px;
+  }
+  .edit{
+    width: 10%;
+    justify-content: left;
+
+    align-items: start;
+  }
+  .edit button form{
+    width: 15%;
+    padding: 0;
+    height: 30px;
+  }
+  .created-at{
+   display: none;
+  }
+}

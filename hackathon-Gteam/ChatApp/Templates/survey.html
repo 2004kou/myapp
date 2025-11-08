@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}survey{% endblock %}
+{% block page_css%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}"/>
+{% endblock %} {% block content %} <div class="wrapper">
+  <nav class="menu-container" id="menu-container">
+    <div class="menu-header">
+        <h3>偏愛会議</h3>
+    </div>
+    <div class="menu-buttons">
+        <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
+        <a class="menu-button" href="{{ url_for('room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
+        <a class="menu-button" href="{{ url_for('edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール</a>
+        <a class="menu-button" href="{{ url_for('index_view') }}">ルーム一覧</a>
+      <a
+        class="menu-button"
+        href="{{ url_for('questionnaire_view') }}"
+        ><i class="fas fa-user"></i> アンケートにご協力ください</a
+      >
+    </div>
+    <div class="menu-footer">
+        <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+    </div>
+  </nav>
+  
+
+  <div class="room-container">
+    <div class="menu-btn" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="room-header">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flashes">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endwith %}
+      <h6 class="room-header-title">あなたと考え方が似ている方々の趣味を検索しよう</h6>
+      <h1 class="min-with-title">偏愛会議</h1>
+      <h2 class="min-with-detail">あなたと考え方が似ている方々の趣味を検索しよう</h2>
+    </div>
+    <form action="{{ url_for('survey_result') }}" method="POST">
+    <div class="room-main">
+      {% if questions %}
+      <ul class="room-list">
+        {% for question in questions %}
+        <div class="question-block">
+          <h3>{{ question.text }}</h3>
+          <div class="options">
+              <div class="options-block">
+                  <input
+                    type="radio"
+                    name="p{{ question.question_id }}"
+                    id="p{{ question.question_id }}_1"
+                    value="1"
+                  />
+                  <label for="p{{ question.question_id }}_1">はい</label>
+              </div>
+              <div class="options-block">
+                <input
+                type="radio"
+                name="p{{ question.question_id }}"
+                id="p{{ question.question_id }}_2"
+                value="0"
+                />
+                <label for="p{{ question.question_id }}_2">いいえ</label>
+              </div>
+          </div>
+        </div> 
+       
+        {% endfor %}
+      </ul>
+       <button class="survey-button">送信</button>
+         </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

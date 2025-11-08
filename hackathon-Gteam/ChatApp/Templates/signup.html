@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}signup{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <img class="flower left", src="{{ url_for('static', filename='image/flower_left.jpg') }}">
+  <div class="signup-wrapper">
+    <h1>偏愛会議</h1>
+    <h2>新規登録</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flashes">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <form class="form-signup" method="post" action="{{ url_for('signup_process') }}">
+      <div>
+        <input placeholder="メールアドレス" type="text" id="email" name="email" required/>
+      </div>
+      <div>
+        <input placeholder="パスワード" type="password" id="password" name="password" required/>
+      </div>
+      <div>
+        <input placeholder="パスワード(確認用)" type="password" id="password_second" name="password_second" required/>
+      </div>
+      <div>
+        <input placeholder="ニックネーム" type="text" id="nickname" name="nickname" required/>
+      </div>
+      <div>
+        <button class="signup-button" type="submit">登録</button>
+      </div>
+    </form>
+    <a class="switch-login-button" href="{{ url_for('login_view') }}">ログインはこちら</a>
+  </div>
+  <img class="flower right", src="{{ url_for('static', filename='image/flower_right.jpg') }}">
+</div>
+{% endblock %}

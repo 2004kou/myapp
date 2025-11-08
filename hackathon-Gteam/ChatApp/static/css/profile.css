@@ -1,0 +1,112 @@
+/* static/css/profile.css */
+
+
+/* room-main内の全体調整 */
+.room-main {
+  padding: 20px;
+  background-color: #FEF3F2;
+}
+
+/* プロフィールアイコンを中央に配置 */
+.room-main img.profile-icon {
+  display: block;
+  margin: 5% auto 5% auto;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  width: 150px;
+  height: 150px;
+}
+.nickname{
+    font-size: x-large;
+    color: #912018;
+    font-weight: bold;
+    margin:10px 160px;
+  }
+/* テキスト部分を左寄せ、やや内側に */
+.room-main p {
+  text-align: left;
+  padding-left: 20%;
+  margin-bottom: 12px;
+}
+.room-sec{
+  width: 100%;
+  padding-left: 250px;
+}
+.room-sec-title {
+    color: #912018;
+    margin-left: 160px;
+    width: 30%;
+    font-size: 20px;
+  }
+  .room-sec-content{
+     font-size: 15px;
+    color: black;
+    margin-left: 10px;
+    width: 70%;
+  }
+.public{
+  margin-left: 160px;
+}
+
+/* ラベル部分を少し目立たせる */
+.room-main p strong {
+  color: #912018;
+  margin-right: 4px;
+}
+@media screen and (max-width: 768px){
+  .room-container{
+    width: 100%;
+  }
+  .room-main{
+    text-align: center;
+    width: 100%;
+  }
+  .room-sec{
+    text-align: center!important;
+
+  }
+  .room-main p {
+  text-align: center;
+  padding-left: 0;
+  margin-bottom: 12px;
+}
+  .profile-icon{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    margin-top: 20px;
+
+  }
+  .flex{
+    display: flex;
+    margin: 10px auto;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .room-sec-title {
+    color: #912018;
+    margin-left: 30px;
+    width: 30%;
+  }
+  .nickname{
+    font-size: 30px;
+    color: #912018;
+    margin: 10px auto;
+    font-weight: bold;
+  }
+  .room-sec-content{
+     font-size: 20px;
+    color: #fb6358;
+    margin-left: 60px;
+    width: 70%;
+  }
+  .public{
+    font-size: 20px;
+    color: #fb6358;
+    margin-left: 4sa0px;
+    width: 70%;
+    text-align: center;
+  }
+}

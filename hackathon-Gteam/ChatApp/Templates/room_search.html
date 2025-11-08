@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}room_search{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/room_search.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+  <nav class="menu-container" id="menu-container">
+    <div class="menu-header">
+        <h3>偏愛会議</h3>
+    </div>
+    <div class="menu-buttons">
+        <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
+        <a class="menu-button" href="{{ url_for('index_view') }}">ルーム一覧</a>
+        <a class="menu-button" href="{{ url_for('edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
+        <a
+        class="menu-button"
+        href="{{ url_for('survey_view') }}"
+        ><i class="fas fa-user"></i> 趣味を探す</a
+      >
+      <a
+        class="menu-button"
+        href="{{ url_for('questionnaire_view') }}"
+        ><i class="fas fa-user"></i> アンケートにご協力ください</a
+      >
+    </div>
+    <div class="menu-footer">
+        <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+    </div>
+  </nav>
+  
+  <div class="room-container">
+    <div class="menu-btn" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="room-header">
+      {% with flashes = get_flashed_messages() %}
+        {% if flashes %}
+        <div class="flashes">
+          {% for flash in flashes %}
+            <p>{{ flash }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endwith %}
+      <h5>ジャンル検索</h5>
+      <h1 class="min-with-title">偏愛会議</h1>
+      <h2 class="min-with-subtitle">ジャンル検索</h2>
+    </div>
+    <div class="room-main">
+      <form method="post" action="{{ url_for('room_search_process') }}">
+        <label for="search_genre_name"></label>
+        <select class="search-genre-name" name="search_genre_name" required>
+          <option value="" disabled selected>ジャンルを選んでください</option>
+          <option value="all">すべて</option>
+          <option value="travel">旅行</option>
+          <option value="eat">飲食</option>
+          <option value="art">芸術</option>
+          <option value="study">学習</option>
+          <option value="movie">映画</option>
+          <option value="comic">漫画・アニメ・ゲーム</option>
+          <option value="music">音楽</option>
+          <option value="idol">アイドル</option>
+          <option value="muscle">筋トレ</option>
+          <option value="sports">スポーツ</option>
+          <option value="sauna">サウナ</option>
+          <option value="relax">リラックス</option>
+          <option value="fashion">ファッション</option>
+          <option value="cosme">コスメ</option>
+          <option value="pet">ペット</option>
+          <option value="another">その他</option>
+        </select>
+        <button class="room-serch-button" type="submit">検索</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

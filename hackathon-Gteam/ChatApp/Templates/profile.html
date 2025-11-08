@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}profile{% endblock %} 
+{% block page_css%}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/profile.css') }}"
+/>
+{% endblock %} {% block content %} <div class="wrapper">
+  <nav class="menu-container" id="menu-container">
+    <div class="menu-header">
+        <h3>偏愛会議</h3>
+    </div>
+    <div class="menu-buttons">
+        <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
+        <a class="menu-button" href="{{ url_for('room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
+        <a class="menu-button" href="{{ url_for('index_view') }}">ルーム一覧</a>
+        <a
+        class="menu-button"
+        href="{{ url_for('survey_view') }}"
+        ><i class="fas fa-user"></i> 趣味を探す</a
+      >
+      <a
+        class="menu-button"
+        href="{{ url_for('questionnaire_view') }}"
+        ><i class="fas fa-user"></i> アンケートにご協力ください</a
+      >
+    </div>
+    <div class="menu-footer">
+        <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+    </div>
+  </nav>
+  
+  <div class="room-container">
+    <div class="menu-btn" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="room-header">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flashes">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endwith %}
+      <h5>プロフィール</h5>
+    </div>
+    <div class="room-main">
+      <h1 class="min-with-title">偏愛会議</h1>
+      <h2 class="min-with-subtitle">プロフィール</h2>
+      
+      <table class="room-sec">
+        {% if users.icon_image_url %}
+          <img class=" profile-icon" src="{{ url_for('static', filename='image/' + users.icon_image_url) }}" alt="プロフィール画像">
+        {% else %}
+          <p><strong>アイコンが：</strong>登録されていません</p>
+        {% endif %}
+      
+        <p class="nickname">{{ users.nickname }}</p>
+
+        {% if users.favorite %}
+        <tr class="flex">
+           <th class="room-sec-title">趣味</th>
+           <td class="room-sec-content">{{ users.favorite }}</td>
+        </tr>
+        {% else %}
+          <p><strong>コメント：</strong>登録されていません</p>
+        {% endif %}
+
+         {% if users.bio %}
+         <tr class="flex">
+          <th class="room-sec-title">コメント</th>
+          <td class="room-sec-content">{{ users.bio }}</td>
+        </tr>
+        {% else %}
+        {% endif %}
+        
+        {% if users.occupation %}
+        <tr class="flex">
+          <th class="room-sec-title">職業</th>
+          <td class="room-sec-content">{{ users.occupation }}</td>
+        </tr>
+        {% else %}
+          <p ><strong>職業：</strong>登録されていません</p>
+        {% endif %}
+        
+        {% if users.residence %}
+        <tr class="flex">
+          <th class="room-sec-title">所在地</th>
+          <td class="room-sec-content">{{ users.residence }}</td>
+        </tr>
+        {% else %}
+          <p><strong>所在地：</strong>登録されていません</p>
+        {% endif %}
+        {% if users.public == 1 %}
+          <p class="public"><strong>情報：</strong>公開</p>
+        {% else %}
+          <p class="public"><strong>情報：</strong>非公開</p>
+        {% endif %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

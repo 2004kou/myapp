@@ -1,0 +1,265 @@
+
+  html, body {
+  font-family: 'Noto Sans JP', sans-serif; /* フォントの指定 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+.menu {
+      display: none;
+    }
+h1 {
+  color: #912018;
+  margin: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントの指定 */
+  font-size: 6vw; /* 画面の横幅に応じて変化する */
+}
+
+h2 {
+  color: #912018;
+  margin: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントの種類 */
+  font-size: 3vw; /* 画面の横幅に応じて変化する */
+}
+
+input {
+  display: block;
+  width: 24vw; /* ボタンの幅 */
+  padding: 0.5vw ; /* ボタンの高さ */
+  margin: 0.6vw; /* 要素の外側の余白 */
+  border-radius: 50px; /* ボタンの角丸 */
+  border: 2px solid #FDA29B; /* 要素の枠線: 1本線 色指定 */
+  /* text-align: center; */
+}
+
+/* 入力欄の文字 */
+::placeholder {
+  color: black;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+
+
+.wrapper {
+  margin: 0;
+  display: flex; /* 親要素に指定、子要素はmenu-container・room-container */
+}
+
+.menu-container {
+  position: fixed;
+  width: 25%;
+  height: 100vh;
+  background-color: #f7cfcc;
+  display: flex; /* 親要素に指定、子要素はmenu-header・menu-buttons・menu-footer */
+  flex-direction: column; /* 要素の配置(縦横斜め): 縦方向（上から下）に並べる */
+  justify-content: space-between; /* 要素の配置:上中下に分ける */
+  text-align: center; /* 文字の配置(左・中央・右): 中央寄せ */
+  align-items: center;
+  overflow: hidden; /* はみ出し防止 */
+}
+
+.menu-header {
+  margin-bottom: 40px;
+}
+
+.menu-buttons {
+  display: flex; /* 親要素に指定、子要素は h4 と aタグ3つ */
+  flex-direction: column;
+  align-items: center;
+  margin-top: -30vh;
+}
+
+.menu-footer {
+  margin-bottom: 7vh;
+}
+
+/* 偏愛会議の文字 */
+h3 {
+  font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントの指定 */
+  font-size: 3vw; /* 画面の横幅に応じて変化する */
+  color: #912018;
+}
+
+
+
+
+
+/* メニューのaタグ */
+.menu-button {
+  display: inline-block;
+  width: 15vw; /* ボタンの幅 */
+  padding: 0.3vw ; /* ボタンの高さ */
+  font-size: 1.3vw;
+  margin: 0.6vw;
+  background-color: #FDA29B;
+  color: #FFFFFF; /* 文字の色 */
+  border: none; /* 要素の枠線: なし */
+  border-radius: 50px; /* ボタンの角丸 */
+  cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+  text-decoration: none; /* 文字の下線:なし */
+}
+
+/* ログアウトボタン */
+.logout-button {
+  display: inline-block;
+  text-align: center;
+  width: 15vw; /* ボタンの幅 */
+  padding: 0.35vw ; /* ボタンの高さ */
+  margin: 1vw;
+  background-color: #D92D20;
+  color: #FFFFFF;
+  font-size: 1.2vw;
+  border: none; /* 要素の枠線: なし */
+  border-radius: 50px; /* ボタンの角丸 */
+  text-decoration: none; /* 文字の下線:なし */
+  cursor: pointer; /* マウスポインターを登録ボタンに合わせると指差しアイコンに変わる */
+}
+
+
+
+/* メニュー */
+.room-header {
+  margin: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントの指定 */
+  font-size: 2vw; /* 画面の横幅に応じて変化する */
+  text-indent: 1em;
+}
+
+.room-header h5 {
+  margin: 0;
+  padding: 0.5vw;
+}
+.min-with-detail{
+    display: none;
+  }
+  .min-with-title {
+    display: none;
+  }
+.min-with-subtitle {
+    display: none;
+  }
+.room-header h5{
+    font-size: xx-large;
+    font-weight: bold;
+    color: #912018;
+}
+.room-container{
+    background-color: #FEF3F2;
+    width: 100%;
+    padding-left: 25%;
+}
+.flashes p {
+  color: red;
+  margin: 0.5em 0;
+  font-size: larger;
+  font-family: 'Noto Sans JP', sans-serif; /* フォントの指定 */
+}
+@media (max-width: 768px) {
+  .menu-header h3{
+    padding-bottom: 80px;
+  }
+  .room-container{
+    padding-top: 60px;
+    padding-left: 0;
+  }
+  .menu-container{
+    width: 60%;
+    padding-top: 80px;
+  }
+  .menu-container h3{
+   font-size: xx-large;
+   margin-bottom: 50px;
+  }
+  .menu-buttons a{
+    font-size: large;
+    width: 80%;
+    margin-bottom: 20px;
+
+  }
+  .menu-footer a{
+    font-size: large;
+    width: 100%;
+    margin-bottom: 20px;
+    
+  }
+
+    .menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      z-index: 20;
+      position: absolute;
+      top: 3%;
+      left: 10%;
+    }
+
+    .menu-btn span {
+      background: #912018;
+      height: 5px;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .menu-btn.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    nav.active {
+      left: 0;
+    }
+  .room-container {
+    background-color: #FEF3F2;
+    width: 100%;
+    padding-left: 0;
+    position: relative;
+}
+.detail{
+  margin-top: 0px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+.flashes p {
+  color: red;
+  font-size:x-large ;
+  font-family: 'Noto Sans JP', sans-serif; /* フォントの指定 */
+}
+.form-group label{
+    font-size: large;
+    font-weight: bolder;
+  }
+  .min-with-subtitle{
+    margin-bottom: 30px;
+    color: #912018;
+    text-align: center;
+  }
+  .min-with-title {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 40px;
+  }
+.min-with-subtitle {
+    font-size: 20px
+  }
+nav{
+    left: -60%;
+    z-index: 10;
+    width: 60%;
+}
+}
