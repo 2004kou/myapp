@@ -17,4 +17,4 @@ copy .env.example .env
 docker compose up
 ブラウザで確認
 
-http://localhost:55000
+http://localhost:55000/login
