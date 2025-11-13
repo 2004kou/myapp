@@ -41,7 +41,7 @@ def room_create_process():
             hobby_genre_id = genre_id_dic["hobby_genre_id"]
             Genre.create(channel_id, channel_name, user_id , hobby_genre_id)
             flash('作成できました。')
-            return redirect(url_for('room.index_create_view'))
+            return redirect(url_for('room.index_view'))
            else:
             channel_id = uuid.uuid4() 
             user_id = session["user_id"]
