@@ -11,22 +11,22 @@
         <h3>偏愛会議</h3>
     </div>
     <div class="menu-buttons">
-        <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
-        <a class="menu-button" href="{{ url_for('room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
-        <a class="menu-button" href="{{ url_for('edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
+        <a class="menu-button" href="{{ url_for('room.room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
+        <a class="menu-button" href="{{ url_for('room.room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
+        <a class="menu-button" href="{{ url_for('profile.edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
         <a
         class="menu-button"
-        href="{{ url_for('survey_view') }}"
+        href="{{ url_for('survey.survey_view') }}"
         ><i class="fas fa-user"></i> 趣味を探す</a
       >
       <a
         class="menu-button"
-        href="{{ url_for('questionnaire_view') }}"
+        href="{{ url_for('survey.questionnaire_view') }}"
         ><i class="fas fa-user"></i> アンケートにご協力ください</a
       >
     </div>
     <div class="menu-footer">
-        <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+        <a class="logout-button" href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
     </div>
   </nav>
   
@@ -56,8 +56,8 @@
         <ul class="room-list">
           {% for channel in channels %}
                <li class="room-item">
-              <a class="room-link" href="{{ url_for('chatroom_screen_view', channel_id=channel.channel_id) }}">{{ channel.channel_name }}</a>
-                <form action="{{ url_for('delete_room', channel_id=channel.channel_id) }}" method="POST">
+              <a class="room-link" href="{{ url_for('chat.chatroom_screen_view', channel_id=channel.channel_id) }}">{{ channel.channel_name }}</a>
+                <form action="{{ url_for('room.delete_room', channel_id=channel.channel_id) }}" method="POST">
                   <button class="delete" type="submit">ルーム削除</button>
                 </form>
             </li>

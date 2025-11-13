@@ -18,7 +18,7 @@
         </div>
       {% endif %}
     {% endwith %}
-        <form class="form-login" method="POST" action="{{ url_for('login_process') }}">
+        <form class="form-login" method="POST" action="{{ url_for('auth.login_process') }}">
             <div>
               <input placeholder="メールアドレス" type="text" id="email" name="email" required/>
             </div>
@@ -30,10 +30,10 @@
             </div>
         </form>
         <div>
-          <a class="switch-signup-button" href="{{ url_for('password_reset_view') }}">パスワードをお忘れの方はこちら</a>
+          <a class="switch-signup-button" href="{{ url_for('auth.password_reset_view') }}">パスワードをお忘れの方はこちら</a>
         </div>    
         <div>
-            <a class="switch-signup-button" href="{{ url_for('signup_view') }}">新規登録はこちら</a>
+            <a class="switch-signup-button" href="{{ url_for('auth.signup_view') }}">新規登録はこちら</a>
         </div>
     </div>
     <img class="flower right", src="{{ url_for('static', filename='image/flower_right.jpg') }}">

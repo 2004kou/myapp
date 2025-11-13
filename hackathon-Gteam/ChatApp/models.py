@@ -72,11 +72,13 @@ class User:
      @classmethod
      def get_by_profile(cls, user_id):
           conn = db_use.get_conn()
+          print(user_id)
           try:
             with conn.cursor(pymysql.cursors.DictCursor) as cursor:
                 sql = "SELECT nickname, icon_image_url, favorite, bio, occupation, residence,public FROM users WHERE user_id=%s"
                 cursor.execute(sql, (user_id,))
                 user = cursor.fetchone()
+                conn.commit()
                 return user
           finally:
                 db_use.release(conn)

@@ -11,22 +11,22 @@
         <h3>偏愛会議</h3>
     </div>
     <div class="menu-buttons">
-        <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
-        <a class="menu-button" href="{{ url_for('index_view') }}">ルーム一覧</a>
-        <a class="menu-button" href="{{ url_for('edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
+        <a class="menu-button" href="{{ url_for('room.room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
+        <a class="menu-button" href="{{ url_for('room.index_view') }}">ルーム一覧</a>
+        <a class="menu-button" href="{{ url_for('profile.edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
         <a
         class="menu-button"
-        href="{{ url_for('survey_view') }}"
+        href="{{ url_for('survey.survey_view') }}"
         ><i class="fas fa-user"></i> 趣味を探す</a
       >
       <a
         class="menu-button"
-        href="{{ url_for('questionnaire_view') }}"
+        href="{{ url_for('survey.questionnaire_view') }}"
         ><i class="fas fa-user"></i> アンケートにご協力ください</a
       >
     </div>
     <div class="menu-footer">
-        <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+        <a class="logout-button" href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
     </div>
   </nav>
   
@@ -52,7 +52,7 @@
     </div>
     <div class="room-main">
       {% for channel in channels %}
-      <a class="room-link" href="{{ url_for('chatroom_screen_view', channel_id=channel.channel_id) }}">
+      <a class="room-link" href="{{ url_for('chat.chatroom_screen_view', channel_id=channel.channel_id) }}">
       <div class="room-serch-result-item">
         <h4 class="room-serch-result-title">ルームタイトル：{{ channel.channel_name }}</h4>
           {% if  channel.channel_comment is not none %}
@@ -69,7 +69,7 @@
       ランキング</h3>
     {% for i in genre_rank %}
     <ul>
-      <a class="room-link" href="{{ url_for('chatroom_screen_view', channel_id=i[0]['channel_id']) }}">
+      <a class="room-link" href="{{ url_for('chat.chatroom_screen_view', channel_id=i[0]['channel_id']) }}">
         
       <li class="ranking-subtitle">
         <h4>{{ loop.index }}位</h4>

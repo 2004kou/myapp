@@ -8,18 +8,18 @@
         <h3>偏愛会議</h3>
     </div>
     <div class="menu-buttons">
-        <a class="menu-button" href="{{ url_for('room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
-        <a class="menu-button" href="{{ url_for('room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
-        <a class="menu-button" href="{{ url_for('edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール</a>
-        <a class="menu-button" href="{{ url_for('index_view') }}">ルーム一覧</a>
+        <a class="menu-button" href="{{ url_for('room.room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
+        <a class="menu-button" href="{{ url_for('room.room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
+        <a class="menu-button" href="{{ url_for('profile.edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール</a>
+        <a class="menu-button" href="{{ url_for('room.index_view') }}">ルーム一覧</a>
       <a
         class="menu-button"
-        href="{{ url_for('questionnaire_view') }}"
+        href="{{ url_for('survey.questionnaire_view') }}"
         ><i class="fas fa-user"></i> アンケートにご協力ください</a
       >
     </div>
     <div class="menu-footer">
-        <a class="logout-button" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+        <a class="logout-button" href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
     </div>
   </nav>
   
@@ -44,7 +44,7 @@
       <h1 class="min-with-title">偏愛会議</h1>
       <h2 class="min-with-detail">あなたと考え方が似ている方々の趣味を検索しよう</h2>
     </div>
-    <form action="{{ url_for('survey_result') }}" method="POST">
+    <form action="{{ url_for('survey.survey_result') }}" method="POST">
     <div class="room-main">
       {% if questions %}
       <ul class="room-list">
