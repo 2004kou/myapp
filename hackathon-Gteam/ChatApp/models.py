@@ -113,18 +113,7 @@ class Login(UserMixin):
 
    
 
-class Genre:
-    @classmethod
-    def create(cls, channel_id, channel_name, user_id , hobby_genre_id):
-        conn = db_use.get_conn()
-        try:
-            with conn.cursor() as cursor:
-                sql = "INSERT INTO channels (channel_id, channel_name, user_id , hobby_genre_id) VALUES (%s, %s, %s, %s)"
-                cursor.execute(sql, (channel_id, channel_name, user_id , hobby_genre_id))
-                conn.commit()
-        finally:
-            db_use.release(conn)
-               
+class Genre:               
     @classmethod
     def create(cls, channel_id, channel_name, channel_comment, user_id , hobby_genre_id):
         conn = db_use.get_conn()
@@ -152,6 +141,20 @@ class Genre:
                 return hobby_genre_id
         finally:
             db_use.release(conn)
+    
+    
+    @classmethod
+    def get_genre_list(cls):
+        conn = db_use.get_conn()
+        try:
+            with conn.cursor() as cursor:
+                sql = "SELECT hobby_genre_name FROM hobby_genres "
+                cursor.execute(sql)
+                genre_list = cursor.fetchall()
+                return genre_list
+        finally:
+            db_use.release(conn)
+
 
     @classmethod
     def find_by_channel_name(cls, channel_name):

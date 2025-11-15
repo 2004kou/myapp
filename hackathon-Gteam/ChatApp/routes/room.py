@@ -71,7 +71,8 @@ def delete_room(channel_id):
 @room_bp.route('/room_search')
 @login_required
 def room_search_view():
-    return render_template('room/room_search.html')
+    genre_list = Genre.get_genre_list()
+    return render_template('room/room_search.html',genres = genre_list)
 
 
 #ジャンル検索画面,ランキング表示画面
@@ -79,26 +80,7 @@ def room_search_view():
 @login_required
 def room_search_process():
     search_genre_name= request.form.get('search_genre_name')
-    genre = {
-    "all": "すべて",
-    "travel": "旅行",
-    "eat": "飲食",
-    "art": "芸術",
-    "study": "学習",
-    "movie": "映画",
-    "comic": "漫画・アニメ・ゲーム",
-    "music": "音楽",
-    "idol": "アイドル",
-    "muscle": "筋トレ",
-    "sports": "スポーツ",
-    "sauna": "サウナ",
-    "relax": "リラックス",
-    "fashion": "ファッション",
-    "cosme": "コスメ",
-    "pet": "ペット",
-    "another": "その他"
-}
-    genre = genre[search_genre_name]
+    print(search_genre_name)
     if  search_genre_name == None:
         flash('ジャンルを選択してください')
         return render_template('room/room_search.html')
@@ -109,25 +91,27 @@ def room_search_process():
             genre_rank = Rank.channel_name_find(channel_id)
             return render_template('room/room_search_result.html', 
                                     channels = channels, 
-                                    genre =genre , 
+                                    genre = search_genre_name, 
                                     content_type='text/html; charset=utf-8', 
                                     genre_rank = genre_rank)
         else:
-            return render_template('room/room_search.html')
+            genre_list = Genre.get_genre_list()
+            return render_template('room/room_search.html',genres = genre_list)
              
     else:
             channels = Search.find_by_search(search_genre_name)
             if channel_val(channels):
-                rank_genre_id_dic = Rank.rank_serch_id(search_genre_name)
-                channel_id = Rank.ranking(rank_genre_id_dic)
+                channel_id = Rank.ranking(search_genre_name)
                 genre_rank = Rank.channel_name_find(channel_id)
                 return render_template('room/room_search_result.html', 
                                         channels = channels, 
-                                        genre =genre , 
+                                        genre =channels , 
                                         content_type='text/html; charset=utf-8', 
                                        genre_rank = genre_rank)               
             else: 
-                 return render_template('room/room_search.html')
+                genre_list = Genre.get_genre_list()
+                return render_template('room/room_search.html',genres = genre_list)
+             
                
 
 

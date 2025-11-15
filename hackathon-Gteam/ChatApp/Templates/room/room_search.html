@@ -13,6 +13,7 @@
     <div class="menu-buttons">
         <a class="menu-button" href="{{ url_for('room.room_create_view') }}"><i class="fas fa-plus"></i> ルーム作成</a>
         <a class="menu-button" href="{{ url_for('room.index_view') }}">ルーム一覧</a>
+        <a class="menu-button" href="{{ url_for('room.room_search_view') }}"><i class="fas fa-search"></i> ジャンル検索</a>
         <a class="menu-button" href="{{ url_for('profile.edit_profile_view') }}"><i class="fas fa-user"></i> プロフィール編集</a>
         <a
         class="menu-button"
@@ -56,25 +57,16 @@
         <select class="search-genre-name" name="search_genre_name" required>
           <option value="" disabled selected>ジャンルを選んでください</option>
           <option value="all">すべて</option>
-          <option value="travel">旅行</option>
-          <option value="eat">飲食</option>
-          <option value="art">芸術</option>
-          <option value="study">学習</option>
-          <option value="movie">映画</option>
-          <option value="comic">漫画・アニメ・ゲーム</option>
-          <option value="music">音楽</option>
-          <option value="idol">アイドル</option>
-          <option value="muscle">筋トレ</option>
-          <option value="sports">スポーツ</option>
-          <option value="sauna">サウナ</option>
-          <option value="relax">リラックス</option>
-          <option value="fashion">ファッション</option>
-          <option value="cosme">コスメ</option>
-          <option value="pet">ペット</option>
-          <option value="another">その他</option>
-        </select>
+          {% if genres %}
+        {% for genre in genres %}
+           <option value="{{ genre.hobby_genre_name }}">{{ genre.hobby_genre_name }}</option>
+          
+       
+        {% endfor %}
+      </select>
         <button class="room-serch-button" type="submit">検索</button>
       </form>
+      {% endif %}  
     </div>
   </div>
 </div>
