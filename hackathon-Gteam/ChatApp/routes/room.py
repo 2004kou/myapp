@@ -80,7 +80,6 @@ def room_search_view():
 @login_required
 def room_search_process():
     search_genre_name= request.form.get('search_genre_name')
-    print(search_genre_name)
     if  search_genre_name == None:
         flash('ジャンルを選択してください')
         return render_template('room/room_search.html')

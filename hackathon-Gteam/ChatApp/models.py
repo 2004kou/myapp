@@ -131,12 +131,12 @@ class Genre:
                 
     
     @classmethod
-    def find_by_genre_id(cls,genrename):
+    def find_by_genre_id(cls,genre_name):
         conn = db_use.get_conn()
         try:
             with conn.cursor() as cursor:
                 sql = "SELECT hobby_genre_id FROM hobby_genres WHERE hobby_genre_name = %s"
-                cursor.execute(sql, (genrename,))
+                cursor.execute(sql, (genre_name,))
                 hobby_genre_id = cursor.fetchone()
                 return hobby_genre_id
         finally:
