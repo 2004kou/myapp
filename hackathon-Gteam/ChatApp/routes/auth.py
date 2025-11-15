@@ -79,17 +79,22 @@ def password_reset_view():
 @auth_bp.route('/password_reset', methods=['POST'])
 def password_reset_process():
     email = request.form.get('email')
+    current_password = request.form.get('current_password')
     new_password = request.form.get('new_password')
     new_password_second = request.form.get('new_password_second')
-
-    if password_Reset_val(email,new_password,new_password_second):
-            user = User.find_by_email(email)
-            new_hashPassword = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
-            User.update_password(user['user_id'], new_hashPassword)
-            flash('パスワードをリセットしました。ログインしてください')
-            return redirect(url_for('auth.login_view'))
+    if not new_password == new_password_second:
+        flash('新しいパスワードと確認用パスワードが違います')
+        return redirect(url_for('password_reset_view'))
+    if login_process_val(email,current_password) :
+        password_Reset_val(email,new_password,new_password_second)
+        user = User.find_by_email(email)
+        new_hashPassword = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
+        User.update_password(user['user_id'], new_hashPassword)
+        flash('パスワードをリセットしました。ログインしてください')
+        return redirect(url_for('auth.login_view'))
     else:
-         return redirect(url_for('auth.password_reset_view'))
+        return redirect(url_for('auth.password_reset_view'))
+
 
 
 

@@ -126,16 +126,20 @@ class Genre:
             db_use.release(conn)
                
     @classmethod
-    def create_comment(cls, channel_id, channel_name, channel_comment, user_id , hobby_genre_id):
+    def create(cls, channel_id, channel_name, channel_comment, user_id , hobby_genre_id):
         conn = db_use.get_conn()
         try:
             with conn.cursor() as cursor:
-                sql = "INSERT INTO channels (channel_id, channel_name, channel_comment, user_id , hobby_genre_id) VALUES (%s, %s, %s, %s, %s)"
-                cursor.execute(sql, (channel_id, channel_name, channel_comment, user_id , hobby_genre_id))
+                if channel_comment:
+                    sql = "INSERT INTO channels (channel_id, channel_name, channel_comment, user_id, hobby_genre_id) VALUES (%s, %s, %s, %s, %s)"
+                    cursor.execute(sql, (channel_id, channel_name, channel_comment, user_id, hobby_genre_id))
+                else:
+                    sql = "INSERT INTO channels (channel_id, channel_name, user_id, hobby_genre_id) VALUES (%s, %s, %s, %s)"
+                    cursor.execute(sql, (channel_id, channel_name, user_id, hobby_genre_id))
                 conn.commit()
         finally:
             db_use.release(conn)
-               
+                
     
     @classmethod
     def find_by_genre_id(cls,genrename):

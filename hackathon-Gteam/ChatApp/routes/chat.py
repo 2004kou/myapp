@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, session, render_template
+from flask import Blueprint, request, redirect, url_for, session, render_template, flash
 from flask_login import login_required, current_user
 from models import Message
 import uuid
@@ -46,8 +46,13 @@ def delete_message(channel_id, message_id):
 @chat_bp.route('/chatroom_screen/<channel_id>/<message_id>/edit', methods=['POST'])
 @login_required
 def update_message(channel_id, message_id):
-    new_content = request.form.get('message')
+    new_content = request.form.get('message')   
     if message_id and new_content:
-        Message.update_message_content(message_id, new_content)
+        message_owner = Message.get_by_user_id(message_id)
+        if message_owner != current_user.user_id:
+            flash('他人のメッセージは編集できません')
+            return redirect(url_for('chatroom_screen_view', channel_id=channel_id))
+        else:
+            Message.update_message_content(message_id, new_content)
     return redirect(url_for('chat.chatroom_screen_view', channel_id = channel_id))
 

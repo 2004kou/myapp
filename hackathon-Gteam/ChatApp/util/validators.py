@@ -46,7 +46,7 @@ def login_process_val(email,password):
     else:
         user = User.find_by_email(email)
         if user is None:
-            flash('このユーザーは存在しません')
+            flash('メールアドレスかパスワードが間違えています。')
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
             if hashPassword != user['password']:

@@ -27,31 +27,22 @@ def room_create_process():
     channel_comment = request.form.get('comment')
     if channel_name == '' or hobby_genre_name == '' :
         flash('空のフォームがあるようです')
-
+        return redirect(url_for('room.room_create_view'))
     else:
        registered_channel_name = Genre.find_by_channel_name(channel_name)
        if registered_channel_name != None:
            flash('そのチャンネル名は登録されているようです')
            return redirect(url_for('room.room_create_view'))
-       else:
-           if channel_comment == "":
+       else:           
             channel_id = uuid.uuid4() 
             user_id = session["user_id"]
             genre_id_dic = Genre.find_by_genre_id(hobby_genre_name)
             hobby_genre_id = genre_id_dic["hobby_genre_id"]
-            Genre.create(channel_id, channel_name, user_id , hobby_genre_id)
+            Genre.create(channel_id, channel_name, channel_comment, user_id , hobby_genre_id)
             flash('作成できました。')
             return redirect(url_for('room.index_view'))
-           else:
-            channel_id = uuid.uuid4() 
-            user_id = session["user_id"]
-            genre_id_dic = Genre.find_by_genre_id(hobby_genre_name)
-            hobby_genre_id = genre_id_dic["hobby_genre_id"]
-            Genre.create_comment(channel_id, channel_name, channel_comment, user_id , hobby_genre_id)
-            flash('作成できました。')
-    return redirect(url_for('room.index_view'))
-
-
+            
+            
 # チャットルーム一覧の表示
 @room_bp.route('/index', methods=['GET'])
 @login_required

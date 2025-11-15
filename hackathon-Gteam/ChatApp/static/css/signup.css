@@ -97,6 +97,7 @@ html, body {
     border-radius: 50px;
     border: #FDA29B 3px solid;
     text-align: center;
+    margin: 0 auto;
   }
 
   .signup-button{
