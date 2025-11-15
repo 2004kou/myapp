@@ -36,12 +36,12 @@ class User:
                 db_use.release(conn)
 
      @classmethod
-     def update_password(cls, user_id, new_hashpassword):
+     def update_password(cls, user_id, new_hash_password):
           conn = db_use.get_conn()
           try:
             with conn.cursor() as cursor:
                 sql = "UPDATE users SET password = %s WHERE user_id = %s"
-                cursor.execute(sql,(new_hashpassword, user_id))
+                cursor.execute(sql,(new_hash_password, user_id))
                 conn.commit()
           finally:
               db_use.release(conn)

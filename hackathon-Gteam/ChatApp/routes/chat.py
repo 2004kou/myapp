@@ -18,8 +18,8 @@ chat_bp = Blueprint(
 @login_required
 def chatroom_screen_view(channel_id):
     messages = Message.get_all(channel_id)
-    channel_name_tupule = Message.get_channel_name(channel_id)
-    channel_name = channel_name_tupule["channel_name"]
+    channel_name_tuple = Message.get_channel_name(channel_id)
+    channel_name = channel_name_tuple["channel_name"]
     user = session["user_id"]
 
     return render_template('chat/chatroom_screen.html', user_id=current_user.user_id, messages=messages, channel_id=channel_id,channel_name = channel_name, user = user)

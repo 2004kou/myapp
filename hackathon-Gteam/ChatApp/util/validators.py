@@ -34,7 +34,7 @@ def password_Reset_val(email,new_password,new_password_second):
     else:
         user = User.find_by_email(email)
         if user is None:
-            flash('このメールアドレスは登録されていません')
+            flash('メールアドレスかパスワードが間違えています。')
         else:
              return True
            
@@ -50,7 +50,7 @@ def login_process_val(email,password):
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
             if hashPassword != user['password']:
-                flash('パスワードが間違っています')
+                flash('メールアドレスかパスワードが間違えています。')
             else:
                 user_id = user['user_id']
                 login_user(Login(user_id))

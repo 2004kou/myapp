@@ -56,8 +56,8 @@ def index_view():
 def delete_room(channel_id):
     user_id = session["user_id"]
     user_id_req =Genre.find_by_userid(channel_id)
-    user_id_reqq_key = user_id_req["user_id"]
-    if user_id_reqq_key != user_id:
+    user_id_req_key = user_id_req["user_id"]
+    if user_id_req_key != user_id:
         flash('このチャットルームの作成者ではないため削除出来ません')
         return redirect(url_for('room.index_view'))
     else:
