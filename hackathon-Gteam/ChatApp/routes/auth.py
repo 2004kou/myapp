@@ -3,7 +3,7 @@ import uuid, hashlib
 from models import User
 from flask_login import logout_user, login_required,current_user
 
-from util.validators import sign_up_val,password_Reset_val,login_process_val
+from util.validators import validate_signup_form,password_Reset_val,login_process_val
 
 auth_bp = Blueprint(
     'auth', __name__,
@@ -28,7 +28,11 @@ def signup_process():
     password = request.form.get('password')
     password_second = request.form.get('password_second')
     nickname = request.form.get('nickname')
-    if sign_up_val(email,password,password_second,nickname):
+    is_valid, error_msg = validate_signup_form(email, password, password_second, nickname)
+    if not is_valid:
+        flash(error_msg)
+        return redirect(url_for('auth.signup_view'))
+    else:
         user_id = uuid.uuid4() 
         password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         registered_user = User.find_by_email(email)
@@ -40,9 +44,6 @@ def signup_process():
                 session['user_id'] = UserId
                 return redirect(url_for('auth.login_view'))
         return redirect(url_for('auth.signup_view'))    
-    else:
-        return  redirect(url_for('auth.signup_view'))
-        
 
 # ログイン処理
 @auth_bp.route('/login', methods=['POST'])
@@ -82,18 +83,21 @@ def password_reset_process():
     current_password = request.form.get('current_password')
     new_password = request.form.get('new_password')
     new_password_second = request.form.get('new_password_second')
-    if not new_password == new_password_second:
-        flash('新しいパスワードと確認用パスワードが違います')
-        return redirect(url_for('password_reset_view'))
-    if login_process_val(email,current_password) :
-        password_Reset_val(email,new_password,new_password_second)
-        user = User.find_by_email(email)
-        new_hashPassword = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
-        User.update_password(user['user_id'], new_hashPassword)
-        flash('パスワードをリセットしました。ログインしてください')
-        return redirect(url_for('auth.login_view'))
-    else:
+    is_valid, error_msg = password_Reset_val(email,current_password,new_password,new_password_second)
+    if not is_valid:
+        flash(error_msg)
         return redirect(url_for('auth.password_reset_view'))
+    is_valid, error_msg = login_process_val(email,new_password)
+    if not is_valid:
+        flash(error_msg)
+        return redirect(url_for('auth.password_reset_view'))
+    password_Reset_val(email,new_password,new_password_second)
+    user = User.find_by_email(email)
+    new_hashPassword = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
+    User.update_password(user['user_id'], new_hashPassword)
+    flash('パスワードをリセットしました。ログインしてください')
+    return redirect(url_for('auth.login_view'))
+
 
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template
 from models import User
-from flask_login import login_required
+from flask_login import login_required,current_user
 
 from util.validators import profile_edit_val
 
@@ -16,7 +16,7 @@ def show_profile(user_id,channel_id):
     users = User.get_by_profile(user_id)
     channel_id = channel_id
     if users:
-        if users.get("public") == 0:
+        if not users.get("public"):
             flash('こちらのユーザーはプロフィールが非公開です')
             return redirect(url_for('chat.chatroom_screen_view', channel_id = channel_id))
         else:
@@ -52,12 +52,15 @@ def edit_profile():
     occupation = request.form.get('occupation')
     residence = request.form.get('residence')
     public = request.form.get('public')
-    if profile_edit_val(nickname,favorite,occupation,residence, bio):
-        # プロフィール更新処理
+    if not nickname:
+        nickname = current_user.nickname
+    is_valid, error_msg = profile_edit_val(favorite,occupation,residence, bio)
+    if not is_valid:
+        flash(error_msg)
+        return redirect(url_for('profile.edit_profile_view'))
+    else:
+    # プロフィール更新処理
         user_id = session.get('user_id')
         User.update_profile(user_id, nickname, icon_image_url, favorite, bio, occupation, residence, public)
-
         flash('プロフィールを更新しました')
         return redirect(url_for('profile.profile_view'))
-    else:
-        return redirect(url_for('profile.edit_profile_view'))
