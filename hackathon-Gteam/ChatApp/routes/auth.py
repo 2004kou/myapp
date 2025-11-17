@@ -50,11 +50,13 @@ def signup_process():
 def login_process():
     email = request.form.get('email')
     password = request.form.get('password')
-
-    if login_process_val(email,password):
-        return redirect(url_for('room.index_view'))
-    else:
+    is_valid, error_msg = login_process_val(email, password)
+    if not is_valid:
+        flash(error_msg)
         return redirect(url_for('auth.login_view'))
+    else:
+        return redirect(url_for('room.index_view'))
+   
 
 
 # ログアウト
@@ -87,15 +89,18 @@ def password_reset_process():
     if not is_valid:
         flash(error_msg)
         return redirect(url_for('auth.password_reset_view'))
-    is_valid, error_msg = login_process_val(email,new_password)
+    is_valid, error_msg = password_Reset_val(email,current_password,new_password,new_password_second)
     if not is_valid:
         flash(error_msg)
         return redirect(url_for('auth.password_reset_view'))
-    password_Reset_val(email,new_password,new_password_second)
+    is_valid, error_msg = login_process_val(email,current_password )
+    if not is_valid:
+        flash(error_msg)
+        return redirect(url_for('auth.password_reset_view'))
     user = User.find_by_email(email)
     new_hashPassword = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
     User.update_password(user['user_id'], new_hashPassword)
-    flash('パスワードをリセットしました。ログインしてください')
+    flash('パスワードを変更しました。ログインしてください')
     return redirect(url_for('auth.login_view'))
 
 

@@ -40,8 +40,8 @@ def password_Reset_val(email,current_password,new_password,new_password_second):
         return False,'新しいパスワードと確認用パスワードが違います'
     if len(new_password) < 8 or len(new_password) > 16:
         return False,'パスワードは8～16文字で入力してください'
-    if not  re.match(EMAIL_PATTERN, email) is None:
-        return False,'正しいメールアドレスの形式で入力してください'
+    if not re.match(EMAIL_PATTERN, email):
+        return False, '正しいメールアドレスの形式ではありません'
     user = User.find_by_email(email)
     if user is None:
             return False,'メールアドレスかパスワードが間違えています。'  
