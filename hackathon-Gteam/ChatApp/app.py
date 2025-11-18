@@ -1,26 +1,14 @@
 from flask import Flask
-import logging
-from datetime import timedelta
-import uuid
 import os
 from flask_login import LoginManager
 
+from config import DevelopmentConfig
 from models import Login
-
-
 from routes import auth_bp, chat_bp, room_bp, profile_bp, survey_bp
 
 
-
-
-# 定数定義
-EMAIL_PATTERN = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-SESSION_DAYS = 30
-
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
-app.permanent_session_lifetime = timedelta(days = SESSION_DAYS)
-
+app.config.from_object(DevelopmentConfig)
 
 #ブルーポイント
 app.register_blueprint(auth_bp)
