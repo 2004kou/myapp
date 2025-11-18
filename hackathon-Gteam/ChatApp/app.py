@@ -2,15 +2,23 @@ from flask import Flask
 import os
 from flask_login import LoginManager
 
+
+
 from config import DevelopmentConfig
 from models import Login
+from extensions import bcrypt
 from routes import auth_bp, chat_bp, room_bp, profile_bp, survey_bp
+
+
 
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
+bcrypt.init_app(app)
 
-#ブルーポイント
+
+
+#ブルーポイント    
 app.register_blueprint(auth_bp)
 app.register_blueprint(chat_bp)
 app.register_blueprint(room_bp)

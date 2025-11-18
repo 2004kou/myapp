@@ -1,14 +1,15 @@
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template
-import uuid, hashlib
 from models import User
 from flask_login import logout_user, login_required,current_user
 
+from extensions import bcrypt
 from util.validators import validate_signup_form,password_Reset_val,login_process_val
 
 auth_bp = Blueprint(
     'auth', __name__,
     url_prefix='/auth'  
 )
+
 
 
 
@@ -33,8 +34,8 @@ def signup_process():
         flash(error_msg)
         return redirect(url_for('auth.signup_view'))
     else:
-        user_id = uuid.uuid4() 
-        password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+        user_id = bcrypt.generate_password_hash(password).decode('utf-8')
+        password =bcrypt.generate_password_hash(password).decode('utf-8')
         registered_user = User.find_by_email(email)
         if registered_user != None:
             flash('既に登録されているようです')
@@ -98,7 +99,7 @@ def password_reset_process():
         flash(error_msg)
         return redirect(url_for('auth.password_reset_view'))
     user = User.find_by_email(email)
-    new_hashPassword = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
+    new_hashPassword = bcrypt.generate_password_hash(new_password).decode('utf-8')
     User.update_password(user['user_id'], new_hashPassword)
     flash('パスワードを変更しました。ログインしてください')
     return redirect(url_for('auth.login_view'))

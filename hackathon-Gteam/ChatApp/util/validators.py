@@ -1,9 +1,10 @@
 from flask import flash, session, request
 import re
-import hashlib
 from flask_login import login_user
 
+from extensions import bcrypt
 from models import User,Login
+
 
 PASSWORDS_PATTERN = r"^.{8,16}$"
 EMAIL_PATTERN = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
@@ -55,8 +56,7 @@ def login_process_val(email,password):
     user = User.find_by_email(email)
     if user is None:
         return False,'メールアドレスかパスワードが間違えています。'
-    hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
-    if hashPassword != user['password']:
+    if not bcrypt.check_password_hash(user['password'], password):
         return False,'メールアドレスかパスワードが間違えています。'
     else:
         user_id = user['user_id']
