@@ -65,15 +65,6 @@ services:
     env_file:
       - .env 
 
-  react-tutorial:
-      build:
-        context: .
-        dockerfile:  Docker/tailwind/Dockerfile
-      volumes:
-        - ./ChatApp:/code
-      ports:
-        - "3000:5000"
-      stdin_open: true 
 
 volumes:
   mysql_data:
