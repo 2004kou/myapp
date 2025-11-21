@@ -63,19 +63,17 @@ services:
         condition: service_healthy
     # .envファイルから環境変数を読み込む
     env_file:
-      - .env
+      - .env 
 
-
-  # services:
-  #   react-tutorial:
-  #     build:
-  #       context: .
-  #       dockerfile:  Docker/tailwind/Dockerfile
-  #     volumes:
-  #       - ./ChatApp:/code
-  #     ports:
-  #       - "3000:5000"
-  #     stdin_open: true 
+  react-tutorial:
+      build:
+        context: .
+        dockerfile:  Docker/tailwind/Dockerfile
+      volumes:
+        - ./ChatApp:/code
+      ports:
+        - "3000:5000"
+      stdin_open: true 
 
 volumes:
   mysql_data:
