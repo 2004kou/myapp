@@ -3,7 +3,7 @@ from flask_login import login_required
 import uuid
 
 from models import Genre, Search, Rank
-
+from util.DB import ensure_conn
 from util.validators import channel_val
 
 room_bp = Blueprint(
@@ -15,6 +15,7 @@ room_bp = Blueprint(
 @room_bp.route('/room_create', methods=['GET'])
 @login_required
 def room_create_view():
+    ensure_conn()
 
     return render_template('room/room_create.html')
 
@@ -22,6 +23,7 @@ def room_create_view():
 @room_bp.route('/room_create', methods=['POST'])
 @login_required
 def room_create_process():
+    ensure_conn()
     channel_name = request.form.get('channel_name')
     hobby_genre_name = request.form.get('hobby_genre_name')
     channel_comment = request.form.get('comment')
@@ -47,6 +49,7 @@ def room_create_process():
 @room_bp.route('/index', methods=['GET'])
 @login_required
 def index_view():
+    ensure_conn()
     channels = Genre.get_all()
     return render_template('room/index.html', channels=channels)
 
@@ -54,6 +57,7 @@ def index_view():
 @room_bp.route('/chatroom_screen/<channel_id>/delete_room', methods=['POST'])
 @login_required
 def delete_room(channel_id):
+    ensure_conn()
     user_id = session["user_id"]
     user_id_req =Genre.find_by_userid(channel_id)
     user_id_req_key = user_id_req["user_id"]
@@ -79,6 +83,7 @@ def room_search_view():
 @room_bp.route('/room_search', methods=['POST'])
 @login_required
 def room_search_process():
+    ensure_conn()
     search_genre_name= request.form.get('search_genre_name')
     if  search_genre_name == None:
         flash('ジャンルを選択してください')
@@ -118,5 +123,6 @@ def room_search_process():
 @room_bp.route('/room_search_result', methods=['GET'])
 @login_required
 def room_search_result():
+    ensure_conn()
     genre = request.args.get('genre')
     return render_template('room/room_search_result.html', genre=genre)

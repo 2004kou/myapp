@@ -1,4 +1,4 @@
-from flask import abort
+from flask import abort, g
 import pymysql
 from flask_login import UserMixin, LoginManager
 from util.DB import DB
@@ -8,6 +8,9 @@ import json
 db_use = DB.init_pool()
 
                
+
+
+
 
 
 class User:

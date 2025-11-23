@@ -8,6 +8,7 @@ from config import DevelopmentConfig
 from models import Login
 from extensions import bcrypt
 from routes import auth_bp, chat_bp, room_bp, profile_bp, survey_bp
+from util.DB import before_request, teardown_request 
 
 
 
@@ -15,6 +16,7 @@ from routes import auth_bp, chat_bp, room_bp, profile_bp, survey_bp
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 bcrypt.init_app(app)
+
 
 
 
@@ -36,6 +38,9 @@ login_manager.login_message = "ログインが必要です。先にログイン�
 @login_manager.user_loader
 def load_user(user_id):
     return  Login(user_id)
+
+app.before_request(before_request)
+app.teardown_request(teardown_request)
 
 
 

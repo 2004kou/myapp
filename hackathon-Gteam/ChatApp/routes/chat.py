@@ -2,7 +2,7 @@ from flask import Blueprint, request, redirect, url_for, session, render_templat
 from flask_login import login_required, current_user
 from models import Message
 import uuid
-
+from util.DB import ensure_conn
 
 chat_bp = Blueprint(
     'chat', __name__,
@@ -17,6 +17,7 @@ chat_bp = Blueprint(
 @chat_bp.route('/chatroom_screen/<channel_id>', methods=['GET'])
 @login_required
 def chatroom_screen_view(channel_id):
+    ensure_conn()
     messages = Message.get_all(channel_id)
     channel_name_tuple = Message.get_channel_name(channel_id)
     channel_name = channel_name_tuple["channel_name"]
@@ -28,6 +29,7 @@ def chatroom_screen_view(channel_id):
 @chat_bp.route('/chatroom_screen/<channel_id>', methods=['POST'])
 @login_required
 def send_message(channel_id):
+    ensure_conn()
     message_content = request.form.get('message')
     if message_content:
         message_id = str(uuid.uuid4())
@@ -38,6 +40,7 @@ def send_message(channel_id):
 @chat_bp.route('/chatroom_screen/<channel_id>/<message_id>/delete', methods=['POST'])
 @login_required
 def delete_message(channel_id, message_id):
+    ensure_conn()
     if message_id:
         Message.delete(message_id, current_user.user_id)
     return redirect(url_for('chat.chatroom_screen_view', channel_id = channel_id))
@@ -46,6 +49,7 @@ def delete_message(channel_id, message_id):
 @chat_bp.route('/chatroom_screen/<channel_id>/<message_id>/edit', methods=['POST'])
 @login_required
 def update_message(channel_id, message_id):
+    ensure_conn()
     new_content = request.form.get('message')   
     if message_id and new_content:
         message_owner = Message.get_by_user_id(message_id)

@@ -2,6 +2,7 @@ from flask import Blueprint, request, redirect, url_for, flash, session, render_
 from models import User
 from flask_login import logout_user, login_required,current_user
 
+from util.DB import ensure_conn
 from extensions import bcrypt
 from util.validators import validate_signup_form,password_Reset_val,login_process_val
 
@@ -20,11 +21,13 @@ auth_bp = Blueprint(
 # ログインページの表示
 @auth_bp.route('/login', methods=['GET'])
 def login_view():
+    ensure_conn()
     return render_template('auth/login.html')
 
 # 新規登録
 @auth_bp.route('/signup', methods=['POST'])
 def signup_process():
+    ensure_conn()
     email = request.form.get('email')
     password = request.form.get('password')
     password_second = request.form.get('password_second')
@@ -49,6 +52,7 @@ def signup_process():
 # ログイン処理
 @auth_bp.route('/login', methods=['POST'])
 def login_process():
+    ensure_conn()
     email = request.form.get('email')
     password = request.form.get('password')
     is_valid, error_msg = login_process_val(email, password)
@@ -64,6 +68,7 @@ def login_process():
 @auth_bp.route('/logout', methods=['GET'])
 @login_required
 def logout():
+    ensure_conn()
     logout_user()
     session.pop('user_id', None)
     flash('ログアウトしました。')
@@ -72,6 +77,7 @@ def logout():
 # 新規登録画面の表示
 @auth_bp.route('/signup', methods=['GET'])
 def signup_view():
+    ensure_conn()
     return render_template('auth/signup.html')
 
 #パスワード再設定画面
@@ -82,6 +88,7 @@ def password_reset_view():
 #パスワード再設定
 @auth_bp.route('/password_reset', methods=['POST'])
 def password_reset_process():
+    ensure_conn()
     email = request.form.get('email')
     current_password = request.form.get('current_password')
     new_password = request.form.get('new_password')
@@ -112,6 +119,7 @@ def password_reset_process():
 @auth_bp.route('/delete_account', methods=['POST'])
 @login_required
 def delete_account_process():
+    ensure_conn()
     user_id = current_user.user_id
     User.delete(user_id)
     logout_user()

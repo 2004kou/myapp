@@ -3,6 +3,7 @@ from models import User
 from flask_login import login_required,current_user
 
 from util.validators import profile_edit_val
+from util.DB import ensure_conn
 
 profile_bp = Blueprint(
     'profile', __name__,
@@ -13,6 +14,7 @@ profile_bp = Blueprint(
 @profile_bp.route('/show_profile/<user_id>/<channel_id>')
 @login_required
 def show_profile(user_id,channel_id):
+    ensure_conn()
     users = User.get_by_profile(user_id)
     channel_id = channel_id
     if users:
@@ -28,6 +30,7 @@ def show_profile(user_id,channel_id):
 @profile_bp.route('/profile', methods=['GET']) 
 @login_required
 def profile_view():
+    ensure_conn()
     user_id = session.get('user_id')
     users = User.get_by_profile(user_id)
     return render_template('profile/profile.html',users = users)
@@ -36,6 +39,7 @@ def profile_view():
 @profile_bp.route('/edit_profile', methods=['GET']) 
 @login_required
 def edit_profile_view():
+    ensure_conn()
     user_id = session.get('user_id')
     profile = User.get_by_profile(user_id)
     return render_template('profile/edit_profile.html',profile = profile)
@@ -45,6 +49,7 @@ def edit_profile_view():
 @profile_bp.route('/edit_profile', methods=['POST'])
 @login_required
 def edit_profile():
+    ensure_conn()
     nickname = request.form.get('nickname')
     icon_image_url = request.form.get('icon')
     favorite = request.form.get('favorite')
