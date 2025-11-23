@@ -30,7 +30,7 @@ def get_conn_with_retry(retries=3):
             return db_use.get_conn()
         except TimeoutError as e:
             print(f"get_conn retry {i+1}/{retries} failed: {e}")
-    raise KTimeoutError("All retries failed")
+    raise TimeoutError("All retries failed")
 
 # --- リクエスト開始時 ---
 def before_request():
