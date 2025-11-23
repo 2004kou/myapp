@@ -10,10 +10,13 @@ cp .env.example .env
 Windows(コマンドプロンプト)の場合
 copy .env.example .env
 
+python3 -m venv venv
+
+source venv/bin/activate
 
 起動方法
 
 docker compose up
 ブラウザで確認
 
-http://localhost:55000/login
+http://localhost:55000/auth/login
