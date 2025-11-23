@@ -6,7 +6,7 @@ from models import Question
 
 
 from util.validators import survey_val
-from util.DB import ensure_conn
+
 
 survey_bp = Blueprint(
     'survey', __name__,
@@ -18,7 +18,6 @@ survey_bp = Blueprint(
 @survey_bp.route('/questionnaire', methods=['POST'])
 @login_required
 def questions_hobby_name():
-    ensure_conn()
     hobby_name = request.form.get('hobby_name')
     hobby_name_none = Question.find_by_hobby(hobby_name)
     hobby_name_id = uuid.uuid4() 
@@ -81,21 +80,18 @@ questions =[
 @survey_bp.route('/questionnaire', methods=['GET'])
 @login_required
 def questionnaire_view():
-    ensure_conn()
     return render_template('survey/questionnaire.html', questions = questions)
 
 
 @survey_bp.route('/survey', methods=['GET'])
 @login_required
 def survey_view():
-    ensure_conn()
     return render_template('survey/survey.html', questions = questions)
 
 
 @survey_bp.route('/survey_result', methods=['GET'])
 @login_required
 def survey_result_view():
-    ensure_conn()
     lists = session.get("hobby_name_list")
     return render_template('survey/survey_result.html',lists = lists)
 
@@ -103,7 +99,6 @@ def survey_result_view():
 @survey_bp.route('/survey', methods=['POST'])
 @login_required
 def survey_result():
-    ensure_conn()
     survey_data ={}
     min_data = []
     rec_hobby_name =[]
