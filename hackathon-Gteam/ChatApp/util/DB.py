@@ -72,3 +72,4 @@ def ensure_conn():
         g.db_conn = get_conn_with_retry()
         g.db_cursor = g.db_conn.cursor()
 
+
