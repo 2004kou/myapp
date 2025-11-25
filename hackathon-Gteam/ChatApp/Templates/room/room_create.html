@@ -53,25 +53,14 @@
       <h2 class="min-with-subtitle">ルーム作成</h2>
       <form class="room-create" method="post" action="{{ url_for('room.room_create_process') }}">
         <input type="text" id="channel_name"placeholder= "ルーム名を入力してください。" name="channel_name"   ><br><br>
-        <select class="search-genre-name" name="hobby_genre_name" required>
+        <select class="search-genre-name" name="search_genre_name" required>
           <option value="" disabled selected>ジャンルを選んでください</option>
-          <option value="travel">旅行</option>
-          <option value="eat">飲食</option>
-          <option value="art">芸術</option>
-          <option value="study">学習</option>
-          <option value="movie">映画</option>
-          <option value="comic">漫画・アニメ・ゲーム</option>
-          <option value="music">音楽</option>
-          <option value="idol">アイドル</option>
-          <option value="muscle">筋トレ</option>
-          <option value="sports">スポーツ</option>
-          <option value="sauna">サウナ</option>
-          <option value="relax">リラックス</option>
-          <option value="fashion">ファッション</option>
-          <option value="cosme">コスメ</option>
-          <option value="pet">ペット</option>
-          <option value="another">その他</option>
-          </select><br>
+          {% if genres %}
+        {% for genre in genres %}
+           <option value="{{ genre.hobby_genre_name }}">{{ genre.hobby_genre_name }}</option>
+        {% endfor %}
+        {% endif %}
+      </select><br>
         <label class="intoro" >紹介文</label>
         <textarea type="textarea" rows="8"id="comment" name="comment" ></textarea>
         <button class="room-create-button">作成</button>

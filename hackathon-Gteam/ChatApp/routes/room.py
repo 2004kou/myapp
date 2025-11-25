@@ -14,15 +14,15 @@ room_bp = Blueprint(
 @room_bp.route('/room_create', methods=['GET'])
 @login_required
 def room_create_view():
-
-    return render_template('room/room_create.html')
+    genre_list = Genre.get_genre_list()
+    return render_template('room/room_create.html',genres = genre_list)
 
 # room作成
 @room_bp.route('/room_create', methods=['POST'])
 @login_required
 def room_create_process():
     channel_name = request.form.get('channel_name')
-    hobby_genre_name = request.form.get('hobby_genre_name')
+    hobby_genre_name = request.form.get('search_genre_name')
     channel_comment = request.form.get('comment')
     if channel_name == '' or hobby_genre_name == '' :
         flash('空のフォームがあるようです')
@@ -36,6 +36,7 @@ def room_create_process():
             channel_id = uuid.uuid4() 
             user_id = session["user_id"]
             genre_id_dic = Genre.find_by_genre_id(hobby_genre_name)
+            print(genre_id_dic)
             hobby_genre_id = genre_id_dic["hobby_genre_id"]
             Genre.create(channel_id, channel_name, channel_comment, user_id , hobby_genre_id)
             flash('作成できました。')
@@ -103,7 +104,7 @@ def room_search_process():
                 genre_rank = Rank.channel_name_find(channel_id)
                 return render_template('room/room_search_result.html', 
                                         channels = channels, 
-                                        genre =channels , 
+                                        genre = search_genre_name, 
                                         content_type='text/html; charset=utf-8', 
                                        genre_rank = genre_rank)               
             else: 

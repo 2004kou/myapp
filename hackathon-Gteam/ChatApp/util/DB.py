@@ -2,6 +2,7 @@ from flask import g,request
 import pymysql
 from pymysqlpool.pool import Pool, TimeoutError
 import os
+import logging
 
 
 
