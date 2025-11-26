@@ -9,6 +9,7 @@ profile_bp = Blueprint(
     url_prefix='/profile'  
 )
 
+
 #チャットルームからほかの人のプロフィール画面表示
 @profile_bp.route('/show_profile/<user_id>/<channel_id>')
 @login_required
@@ -20,7 +21,7 @@ def show_profile(user_id,channel_id):
             flash('こちらのユーザーはプロフィールが非公開です')
             return redirect(url_for('chat.chatroom_screen_view', channel_id = channel_id))
         else:
-            return render_template('profile.html',users = users)
+            return render_template('profile/profile.html',users = users)
     return redirect(url_for('chat.chatroom_screen_view', channel_id = channel_id))
 
 # プロフィール画面の表示

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template
 from models import User
 from flask_login import logout_user, login_required,current_user
+import uuid
 
 
 from extensions import bcrypt
@@ -35,7 +36,7 @@ def signup_process():
         flash(error_msg)
         return redirect(url_for('auth.signup_view'))
     else:
-        user_id = bcrypt.generate_password_hash(password).decode('utf-8')
+        user_id = uuid.uuid4()
         password =bcrypt.generate_password_hash(password).decode('utf-8')
         registered_user = User.find_by_email(email)
         if registered_user != None:
