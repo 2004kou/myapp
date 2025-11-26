@@ -64,7 +64,7 @@
   }
   .room-sec{
     text-align: center!important;
-
+    padding-left: 0;
   }
   .room-main p {
   text-align: center;
@@ -105,7 +105,7 @@
   .public{
     font-size: 20px;
     color: #fb6358;
-    margin-left: 4sa0px;
+    margin-left: 0px;
     width: 70%;
     text-align: center;
   }
